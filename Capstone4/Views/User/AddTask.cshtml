@@ -1,0 +1,9 @@
+﻿
+    <form action="/User/AddTask" method="post" class="form-control">
+        <input type="hidden" name="UserId" value="@Model" />
+        <input type="text" name="TaskName" placeholder="Task Name" />
+        <input type="text" name="TaskDescription" placeholder="Task Description" />
+        <input type="date" name="TaskDue" />
+        <input type="hidden" name="TaskComplete" value="false" />
+        <input type="submit" value="Add Task" />
+    </form>

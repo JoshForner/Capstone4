@@ -1,0 +1,13 @@
+﻿@model List<Tasks>
+
+@foreach (Tasks task in Model)
+{
+    
+        <td>@task.TaskName</td>
+        <td>@task.TaskDescription</td>
+        <td>@task.TaskDue.ToShortDateString()</td>
+        <td>@task.TaskComplete</td>
+        <td><a href="/User/MarkComplete?id=@task.Id" class="btn-outline-primary">Completion Status</a></td>
+        <td><a href="/User/Delete?id=@task.Id" class="btn-outline-danger">Delete Task</a></td>
+   
+}

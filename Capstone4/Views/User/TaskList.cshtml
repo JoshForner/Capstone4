@@ -1,0 +1,35 @@
+﻿@model List<Tasks>
+@using Microsoft.AspNetCore.Http;
+ 
+
+<h2>Here are your tasks</h2>
+<br />
+
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <td>TaskName</td>
+            <td>TaskDescription</td>
+            <td>@if (Context.Session.GetString("Order") == "asc") {@Html.ActionLink("TaskDue ^", "Sort", new { order = "desc" })} else {@Html.ActionLink("TaskDue v", "Sort", new { order = "asc" })}</td>
+            <td>@if (Context.Session.GetString("Complete") == "true") {@Html.ActionLink("TaskComplete ^", "Sort2", new { complete = "false" })} else {@Html.ActionLink("TaskComplete v", "Sort2", new { complete = "true" })}</td>
+        </tr>
+
+    </thead>
+    @foreach (Tasks task in Model)
+    {
+        <tr>
+            <td>@task.TaskName</td>
+            <td>@task.TaskDescription</td>
+            <td>@task.TaskDue.ToShortDateString()</td>
+            <td>@task.TaskComplete</td>
+            <td><a href="/User/MarkComplete?id=@task.Id" class="btn-outline-primary">Completion Status</a></td>
+            <td><a href="/User/Delete?id=@task.Id" class="btn-outline-danger">Delete Task</a></td>
+        </tr>
+    }
+
+</table>
+
+
+<a href="/User/AddTask">Add Task</a>
+
+
